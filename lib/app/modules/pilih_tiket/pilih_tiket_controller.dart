@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PilihTiketController extends GetxController {
-   var indexTraincar = 0.obs;
-   var traincar = List.generate(
+  var indexTraincar = 0.obs;
+  var traincar = List.generate(
     6,
     (indexX) => List<Map<String, dynamic>>.generate(
       75,
@@ -44,14 +44,12 @@ class PilihTiketController extends GetxController {
     ),
   ).obs;
 
-
-
-    void changeCarriage(int indexGerbongTerpilih) {
+  void changeCarriage(int indexGerbongTerpilih) {
     indexTraincar.value = indexGerbongTerpilih;
     traincar.refresh();
   }
 
-   void reset() {
+  void reset() {
     for (var element in traincar) {
       for (var element in element) {
         if (element["status"] != "filled") {
@@ -61,17 +59,13 @@ class PilihTiketController extends GetxController {
     }
   }
 
-  
-  void selectKursi(int indexSeat) {
-    debugPrint(traincar[indexTraincar.value][indexSeat].toString());
-    if (traincar[indexTraincar.value][indexSeat]["status"] ==
-        "available") {
+  void select(int indexSeat) {
+    // debugPrint(traincar[indexTraincar.value][indexSeat].toString());
+    if (traincar[indexTraincar.value][indexSeat]["status"] == "available") {
       reset();
       traincar[indexTraincar.value][indexSeat]
           .update("status", (value) => "selected");
     }
     traincar.refresh();
   }
-
-
 }

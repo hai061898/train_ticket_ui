@@ -218,7 +218,7 @@ class PilihTiketView extends StatelessWidget {
                                       itemBuilder: (context, index) =>
                                           GestureDetector(
                                         onTap: () =>
-                                            controller.selectKursi(index),
+                                            controller.select(index),
                                         child: Container(
                                           width: 50,
                                           height: 50,
